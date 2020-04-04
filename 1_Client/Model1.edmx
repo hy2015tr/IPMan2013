@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="IPMAN2013Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TableGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="TableRequest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaskID" Type="int" Nullable="false" />
+          <Property Name="ReqStart" Type="datetime2" Precision="7" />
+          <Property Name="ReqFinish" Type="datetime2" Precision="7" />
+          <Property Name="ReqUser" Type="nvarchar" MaxLength="100" />
+          <Property Name="ReqLog" Type="nvarchar" MaxLength="4000" />
+          <Property Name="ReqType" Type="nvarchar" MaxLength="100" />
+          <Property Name="USR_Request_01" Type="nvarchar" MaxLength="100" />
+          <Property Name="PBN_Apprv_02" Type="nvarchar" MaxLength="100" />
+          <Property Name="CBL_Switch_03" Type="nvarchar" MaxLength="100" />
+          <Property Name="PBN_Close_04" Type="nvarchar" MaxLength="100" />
+          <Property Name="PingStatus" Type="nvarchar" MaxLength="100" />
+          <Property Name="IPStatus" Type="nvarchar" MaxLength="100" />
+          <Property Name="IPAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="Network" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsConflict" Type="nvarchar" MaxLength="100" />
+          <Property Name="MacAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExtPriority" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExtSite" Type="nvarchar" MaxLength="200" />
+          <Property Name="ExtNote" Type="nvarchar" MaxLength="200" />
+          <Property Name="ExtServerName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExtResponsible" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExtVM" Type="bit" />
+          <Property Name="ExtBackup" Type="bit" />
+          <Property Name="ExtPortSecurity" Type="bit" />
+          <Property Name="ExtModulePort1" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExtModulePort2" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExtSwitch1" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExtSwitch2" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExtVlanNo" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TableServer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Address" Type="nvarchar" MaxLength="200" />
+          <Property Name="Version" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Password" Type="nvarchar" MaxLength="200" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="TableSession">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SessionStart" Type="datetime2" Precision="7" />
+          <Property Name="SessionFinish" Type="datetime2" Precision="7" />
+          <Property Name="ElapsedTime" Type="bigint" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="200" />
+          <Property Name="PCName" Type="nvarchar" MaxLength="200" />
+          <Property Name="IPAddress" Type="nvarchar" MaxLength="200" />
+          <Property Name="AppVersion" Type="nvarchar" MaxLength="200" />
+          <Property Name="NetVersion" Type="nvarchar" MaxLength="200" />
+          <Property Name="Status" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="TableSubnet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="TableUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Password" Type="nvarchar" MaxLength="200" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="200" />
+          <Property Name="GroupID" Type="int" />
+          <Property Name="Admin" Type="bit" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <Association Name="FK_TableUser_TableGroup">
+          <End Role="TableGroup" Type="Self.TableGroup" Multiplicity="0..1" />
+          <End Role="TableUser" Type="Self.TableUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TableGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TableUser">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IPMAN2013ModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TableGroup" EntityType="Self.TableGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TableRequest" EntityType="Self.TableRequest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TableServer" EntityType="Self.TableServer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TableSession" EntityType="Self.TableSession" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TableSubnet" EntityType="Self.TableSubnet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TableUser" EntityType="Self.TableUser" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TableUser_TableGroup" Association="Self.FK_TableUser_TableGroup">
+            <End Role="TableGroup" EntitySet="TableGroup" />
+            <End Role="TableUser" EntitySet="TableUser" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IPMAN2013Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TableGroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="TableUser" Relationship="Self.FK_TableUser_TableGroup" FromRole="TableGroup" ToRole="TableUser" />
+        </EntityType>
+        <EntityType Name="TableRequest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskID" Type="Int32" Nullable="false" />
+          <Property Name="ReqStart" Type="DateTime" Precision="7" />
+          <Property Name="ReqFinish" Type="DateTime" Precision="7" />
+          <Property Name="ReqUser" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ReqLog" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="ReqType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="USR_Request_01" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PBN_Apprv_02" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CBL_Switch_03" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PBN_Close_04" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PingStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IPStatus" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IPAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Network" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsConflict" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MacAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ExtPriority" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ExtSite" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ExtNote" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ExtServerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ExtResponsible" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ExtVM" Type="Boolean" />
+          <Property Name="ExtBackup" Type="Boolean" />
+          <Property Name="ExtPortSecurity" Type="Boolean" />
+          <Property Name="ExtModulePort1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ExtModulePort2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ExtSwitch1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ExtSwitch2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ExtVlanNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TableServer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Version" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="TableSession">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SessionStart" Type="DateTime" Precision="7" />
+          <Property Name="SessionFinish" Type="DateTime" Precision="7" />
+          <Property Name="ElapsedTime" Type="Int64" />
+          <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="PCName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IPAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="AppVersion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NetVersion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TableSubnet">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="TableUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="GroupID" Type="Int32" />
+          <Property Name="Admin" Type="Boolean" />
+          <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="TableGroup" Relationship="Self.FK_TableUser_TableGroup" FromRole="TableUser" ToRole="TableGroup" />
+        </EntityType>
+        <Association Name="FK_TableUser_TableGroup">
+          <End Role="TableGroup" Type="Self.TableGroup" Multiplicity="0..1" />
+          <End Role="TableUser" Type="Self.TableUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TableGroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TableUser">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IPMAN2013Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TableGroup" EntityType="Self.TableGroup" />
+          <EntitySet Name="TableRequest" EntityType="Self.TableRequest" />
+          <EntitySet Name="TableServer" EntityType="Self.TableServer" />
+          <EntitySet Name="TableSession" EntityType="Self.TableSession" />
+          <EntitySet Name="TableSubnet" EntityType="Self.TableSubnet" />
+          <EntitySet Name="TableUser" EntityType="Self.TableUser" />
+          <AssociationSet Name="FK_TableUser_TableGroup" Association="Self.FK_TableUser_TableGroup">
+            <End Role="TableGroup" EntitySet="TableGroup" />
+            <End Role="TableUser" EntitySet="TableUser" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IPMAN2013ModelStoreContainer" CdmEntityContainer="IPMAN2013Entities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="IPMAN2013Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TableGroup">
+            <EntityTypeMapping TypeName="IPMAN2013Model.TableGroup">
+              <MappingFragment StoreEntitySet="TableGroup">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TableRequest">
+            <EntityTypeMapping TypeName="IPMAN2013Model.TableRequest">
+              <MappingFragment StoreEntitySet="TableRequest">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+                <ScalarProperty Name="ReqStart" ColumnName="ReqStart" />
+                <ScalarProperty Name="ReqFinish" ColumnName="ReqFinish" />
+                <ScalarProperty Name="ReqUser" ColumnName="ReqUser" />
+                <ScalarProperty Name="ReqLog" ColumnName="ReqLog" />
+                <ScalarProperty Name="ReqType" ColumnName="ReqType" />
+                <ScalarProperty Name="USR_Request_01" ColumnName="USR_Request_01" />
+                <ScalarProperty Name="PBN_Apprv_02" ColumnName="PBN_Apprv_02" />
+                <ScalarProperty Name="CBL_Switch_03" ColumnName="CBL_Switch_03" />
+                <ScalarProperty Name="PBN_Close_04" ColumnName="PBN_Close_04" />
+                <ScalarProperty Name="PingStatus" ColumnName="PingStatus" />
+                <ScalarProperty Name="IPStatus" ColumnName="IPStatus" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="Network" ColumnName="Network" />
+                <ScalarProperty Name="IsConflict" ColumnName="IsConflict" />
+                <ScalarProperty Name="MacAddress" ColumnName="MacAddress" />
+                <ScalarProperty Name="ExtPriority" ColumnName="ExtPriority" />
+                <ScalarProperty Name="ExtSite" ColumnName="ExtSite" />
+                <ScalarProperty Name="ExtNote" ColumnName="ExtNote" />
+                <ScalarProperty Name="ExtServerName" ColumnName="ExtServerName" />
+                <ScalarProperty Name="ExtResponsible" ColumnName="ExtResponsible" />
+                <ScalarProperty Name="ExtVM" ColumnName="ExtVM" />
+                <ScalarProperty Name="ExtBackup" ColumnName="ExtBackup" />
+                <ScalarProperty Name="ExtPortSecurity" ColumnName="ExtPortSecurity" />
+                <ScalarProperty Name="ExtModulePort1" ColumnName="ExtModulePort1" />
+                <ScalarProperty Name="ExtModulePort2" ColumnName="ExtModulePort2" />
+                <ScalarProperty Name="ExtSwitch1" ColumnName="ExtSwitch1" />
+                <ScalarProperty Name="ExtSwitch2" ColumnName="ExtSwitch2" />
+                <ScalarProperty Name="ExtVlanNo" ColumnName="ExtVlanNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TableServer">
+            <EntityTypeMapping TypeName="IPMAN2013Model.TableServer">
+              <MappingFragment StoreEntitySet="TableServer">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TableSession">
+            <EntityTypeMapping TypeName="IPMAN2013Model.TableSession">
+              <MappingFragment StoreEntitySet="TableSession">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SessionStart" ColumnName="SessionStart" />
+                <ScalarProperty Name="SessionFinish" ColumnName="SessionFinish" />
+                <ScalarProperty Name="ElapsedTime" ColumnName="ElapsedTime" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PCName" ColumnName="PCName" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="AppVersion" ColumnName="AppVersion" />
+                <ScalarProperty Name="NetVersion" ColumnName="NetVersion" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TableSubnet">
+            <EntityTypeMapping TypeName="IPMAN2013Model.TableSubnet">
+              <MappingFragment StoreEntitySet="TableSubnet">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TableUser">
+            <EntityTypeMapping TypeName="IPMAN2013Model.TableUser">
+              <MappingFragment StoreEntitySet="TableUser">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="Admin" ColumnName="Admin" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
