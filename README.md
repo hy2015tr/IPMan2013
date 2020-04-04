@@ -270,27 +270,13 @@ total numbers.
 
 ![](media/e4e6e13ae46f6e635914bcd5d3600439.png)
 
-**SETTINGS :** All the applications settings including server IP addresses,
-Subnet Lists and username and passwords. User can easiy find parameters here. In
-case if it needed, this is the one place to update values.
-
-![](media/da3d99c44da275a959efcbd901a68aa2.png)
-
-Update and New Record Window:
-
-![](media/608f2a41287df818b9cfb3619df1fa10.png)
-
-**[6] System Messages:**
-
-![](media/236c684763df1c2e67a259f73a9d65b0.png)
-
-**[7] Application Setup :**
+**[6] Application Setup :**
 
 **http://10.18.26.183/IPMAN2013/Setup.htm**
 
 ![](media/c255ec6e2a6aeb38bb110048b1997eda.png)
 
-**[8] Application Key Features :**
+**[7] Application Key Features :**
 
 Here is the key feature list of the application:
 
@@ -307,7 +293,7 @@ Here is the key feature list of the application:
 -   **Application can inform required users and groups by email at some
     reservation period.**
 
-**[9] PERL Scripts:**
+**[8] PERL Scripts:**
 
 >   **DELETE PROCESS**
 
