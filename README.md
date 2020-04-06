@@ -2,14 +2,14 @@
 
 Analysis and Development Document
 
-| **Written by** | Hasan YILDIRIM ( SAP/NET Consultant) \@ **PIA** |
-|----------------|-------------------------------------------------|
-| **Email**      | HasanYildirim\@hotmail.com                      |
-| **Place**      | TeknoPark / Kurtkoy / İSTANBUL                  |
-| **Date**       | 05.June.2014                                    |
-| **Version**    | v1.0                                            |
+    | Written by | Hasan YILDIRIM ( SAP/NET Consultant) @ PIA      |
+    |------------|-------------------------------------------------|
+    | Email      | HasanYildirim@hotmail.com                       |
+    | Place      | TeknoPark / Kurtkoy / İSTANBUL                  |
+    | Date       | 05.June.2014                                    |
+    | Version    | v1.0                                            |
 
-**[1] Purpose of This Software :**
+## [1] Purpose of This Software :
 
 Managing IP addresses with reservation process is a crutial system in a wide
 range network. To handle this complex senario, IPMan2013 was developed with PBN
@@ -20,17 +20,17 @@ and simple interface provides easy to use for corparate users.
 
 ![](media/6f0d70ea47baa9a0358148fb20c23aec.png)
 
-**[2] Infrastructure of Reservation Process :**
+## [2] Infrastructure of Reservation Process :
 
 To understand how the application reservation process works, the following
 picture should be evaluated. As you seen, there are 3 main groups in the
 corporate.
 
->   **I) PBN Group**
+**I) PBN Group**
 
->   **II) IT Group**
+**II) IT Group**
 
->   **III) CABLING Group**
+**III) CABLING Group**
 
 In the next chapters, we will be discussing how to define groups in Application
 Settings window including other important parameters.
@@ -48,7 +48,7 @@ unfortunately since the storing the raw data for 3 years will require a huge
 system and would coste a lot, a decision has been made to go with the condense
 type of data and save for 1 year only for now.
 
-**[2] Used Software Technologies and Methods :**
+**Used Software Technologies and Methods :**
 
         Devlopment Tool     : Microsoft Visual Studio 2012 Ultimate
         WAPI Client         : Microsoft WAPI Client v4.0
@@ -92,7 +92,7 @@ considered a synonym for web service, Web 2.0 web applications have moved away
 from SOAP-based web services towards more cohesive collections of RESTful web
 resources.
 
-**[3] INFOBLOX WAPI Sample Codes and Results :**
+## [3] INFOBLOX WAPI Sample Codes and Results :
 
 ![](media/6515a3f61662ea17751519c0c79a1ab3.png)
 
@@ -105,9 +105,7 @@ resources.
 ![](media/6759cc74a574c254af4b0dbb4345eb9d.png)
 
 **ZG5zLm5ldHdvcmskMjAuMjAuMjAuMC8yOC8w**
-
 **Ref1: ZG5zLm5ldHdvcmskMjAuMjAuMjAuMC8yNC8w -\> 20.20.20.0**
-
 **Ref2: ZG5zLm5ldHdvcmskMzAuMzAuMzAuMC8yNC8w -\> 30.30.30.0**
 
 **I want to make the following curl call in my C\# console application:**
@@ -127,25 +125,27 @@ better (from a usability standpoint) than the former two.**
 
 **In your case, you would do this:**
 
-        using System.Net.Http;
-        var client = new HttpClient();
+```csharp
+   using System.Net.Http;
+   var client = new HttpClient();
 
-        // Create the HttpContent for the form to be posted.
-        var requestContent = new FormUrlEncodedContent(new [] {
-        new KeyValuePair<string, string>("text", "This is a block of text")});
+   // Create the HttpContent for the form to be posted.
+   var requestContent = new FormUrlEncodedContent(new [] {
+   new KeyValuePair<string, string>("text", "This is a block of text")});
 
-        // Get the response.
-        HttpResponseMessage response = await client.PostAsync("http://api.repustate.com/v2/demokey/score.json", requestContent);
+   // Get the response.
+   HttpResponseMessage response = await client.PostAsync("http://api.repustate.com/v2/demokey/score.json", requestContent);
 
-        // Get the response content.
-        HttpContent responseContent = response.Content;
+   // Get the response content.
+   HttpContent responseContent = response.Content;
 
-        // Get the stream of the content.
-        using (var reader = new StreamReader(await responseContent.ReadAsStreamAsync()))
-        {
-            // Write the output.
-            Console.WriteLine(await reader.ReadToEndAsync());
-        }       
+   // Get the stream of the content.
+   using (var reader = new StreamReader(await responseContent.ReadAsStreamAsync()))
+   {
+      // Write the output.
+      Console.WriteLine(await reader.ReadToEndAsync());
+   }       
+```
 
 **https://10.1.1.104/wapi/v1.0/network?comment\~:=test**
 
@@ -172,9 +172,7 @@ searches.
 The field is searchable via
 
 **• := (case insensitive search)**
-
 **• = (exact equality)**
-
 **• \~= (regular expression)**
 
 **Notes:** search_string is a search-only field.
@@ -199,12 +197,11 @@ The field is searchable via
 
 **[ ipv4address ]**
 
-**https://10.1.1.104/wapi/v1.0/ipv4address?ip_address\>=10.4.30.11&_max_results=50&status=UNUSED
-NEXT_AVAILABLE_IP_LIST**
+**https://10.1.1.104/wapi/v1.0/ipv4address?ip_address\>=10.4.30.11&_max_results=50&status=UNUSEDNEXT_AVAILABLE_IP_LIST**
 
 ![](media/7c1ffc4e00cfa12a099a60800af323d6.png)
 
-**[4] Data Model :**
+## [4] Data Model :
 
 **Microsoft Entity Framework** used for data operations with LINQ language.
 Developing single data access layer makes application easy to manage and clear
@@ -228,19 +225,13 @@ retrieve the data.
 We can see application’s tables as above schema. If need to know what are the
 important db objects in the platform:
 
--   **TableGroup :** Keeps all the Group Details including emails, descs and
-    status.
-
--   **TableUser :** Stores all application users with login specifacitons This
-    table has relation with TableGroup. Ever user must be included in a group.
-
+-   **TableGroup :** Keeps all the Group Details including emails, descs and status.
+-   **TableUser :** Stores all application users with login specifacitons This table has relation with TableGroup. Ever user must be included in a group.
 -   **TableServer :** Stores INFOBLOX production server as IP Address.
-
 -   **TableSubnet :** Descriptions of all available subnets in the app.
-
 -   **TableRequest :** Transaction table tracks all user requests for IPs.
 
-**[5] Application Interface :**
+## [5] Application Interface :
 
 The application consists of 5 main secreens as follow:
 
@@ -270,13 +261,13 @@ total numbers.
 
 ![](media/e4e6e13ae46f6e635914bcd5d3600439.png)
 
-**[6] Application Setup :**
+## [6] Application Setup :
 
 **http://10.18.26.183/IPMAN2013/Setup.htm**
 
 ![](media/c255ec6e2a6aeb38bb110048b1997eda.png)
 
-**[7] Application Key Features :**
+## [7] Application Key Features :
 
 Here is the key feature list of the application:
 
@@ -293,7 +284,7 @@ Here is the key feature list of the application:
 -   **Application can inform required users and groups by email at some
     reservation period.**
 
-**[8] PERL Scripts:**
+## [8] PERL Scripts:
 
 >   **DELETE PROCESS**
 
